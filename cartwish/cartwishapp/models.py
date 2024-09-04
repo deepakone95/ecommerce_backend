@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class UserInfo(User):
     deliveryAddress = models.CharField(max_length= 255, null = True, blank = True )
-    profilePic = models.FileField()
+    profilePic = models.FileField(upload_to="documents/", blank = True, null = True)
 
 class Catageory(models.Model):
     name = models.CharField(max_length= 255, null = True, blank = True )
@@ -15,7 +15,7 @@ class Catageory(models.Model):
 class Products(models.Model):
     title = models.CharField(max_length= 255, null = True, blank = True )
     description = models.CharField(max_length= 255, null = True, blank = True )
-    image = models.CharField(max_length= 255, null = True, blank = True )
+    image = models.FileField(upload_to="documents/", blank = True, null = True)
     price = models.IntegerField(null = True, blank = True)
     stock = models.IntegerField(null = True, blank = True)
     catageory = models.ForeignKey(Catageory,on_delete = models.CASCADE)
